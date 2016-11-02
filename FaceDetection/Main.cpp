@@ -5,10 +5,15 @@
 #include <opencv2/videoio.hpp>
 
 
+#include "ConnectedComponent.h"
+
+//#include <algorithm>
+
 using namespace cv;
 using namespace std;
 
-Mat FindLargestComponant(Mat&);
+void FindLargestComponant(Mat&);
+
 
 int main(int argc, char** argv)
 {
@@ -23,9 +28,6 @@ int main(int argc, char** argv)
 	Mat result;
 	Mat imYCrCb;
 	Mat labels;
-	//initialize some params
-	int IM_HEIGHT;
-	int IM_WIDTH;
 	// YCrCb range for skin model as recommended by professor 
 	Scalar minYCrCb(0, 133, 77); //min values of skin model in YCrBc color space
 	Scalar maxYCrCb(255, 173, 127); // max values of skin model in YCrBc color space
@@ -43,8 +45,6 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
-	IM_HEIGHT = image.size[0];
-	IM_WIDTH = image.size[1];
 
 	namedWindow("Original", WINDOW_AUTOSIZE); // Create a window for display.
 	namedWindow("Result", WINDOW_AUTOSIZE); // Create a window for display.
@@ -57,30 +57,42 @@ int main(int argc, char** argv)
 	cvtColor(image, imYCrCb, CV_BGR2YCrCb);
 
 	//Segment to CV_8U type bitmap, white (255) if pixel is within skinmodel, black (0) otherwise
-	inRange(imYCrCb, minYCrCb, maxYCrCb, result);
+	inRange(imYCrCb, minYCrCb, maxYCrCb, result); //result is a 1 channel mat containging type CV_8U
 
 	//make connected component map. A face will have a large cluster of skin coloured pixels while the background 
 	//may or may not have large clusters of skincolored pixels. Find connected components
+	
+	//Mat labelImage(image.size(), CV_32S);
 
-	//Mat labelImage(img.size(), CV_32S);
-	//imshow("Result", result);
-	//Mat test = FindLargestComponant(result);
+	//FindLargestComponant(result);
+	//ConnectedComponent hej = 
+	ConnectedComponent(result);
+	
+	//int nLabels = connectedComponents(result, labelImage, 8);
+	//cout << "CV says " << nLabels << "components" << endl;
+	//********//
+	/*
 	Mat labelImage(image.size(), CV_32S);
 	int nLabels = connectedComponents(result, labelImage, 8);
-	std::vector<Vec3b> colors(nLabels);
+	vector<Vec3b> colors(nLabels);
 	colors[0] = Vec3b(0, 0, 0);//background
 	
+
 	for (int label = 1; label < nLabels; ++label) {
 		colors[label] = Vec3b((rand() & 255), (rand() & 255), (rand() & 255));
 	}
+	//count labels
 	Mat dst(image.size(), CV_8UC3);
 	for (int r = 0; r < dst.rows; ++r) {
 		for (int c = 0; c < dst.cols; ++c) {
 			int label = labelImage.at<int>(r, c);
+	
 			Vec3b &pixel = dst.at<Vec3b>(r, c);
 			pixel = colors[label];
 		}
 	}
+	*/
+	//********//
 
 	//cout << result.rows << result.cols;
 	//perform erosion on background to get less noise
@@ -95,25 +107,24 @@ int main(int argc, char** argv)
 	//cout << labelImage;
 	//imshow("Result", result); // display result
 
-	imshow("Result", dst); // display result
+	imshow("Result", result); // display result
 
 	waitKey(0); // Wait for a keystroke in the window
 	return 0;
 }
 
+//returns the largest connected componant in an image
 
-Mat FindLargestComponant(Mat &inputIm){
+void FindLargestComponant(Mat &inputIm){
 
-	Mat res(inputIm.rows, inputIm.cols, CV_32FC1); //initialize generated picture with zeros
+	Mat res(inputIm.rows, inputIm.cols, CV_32FC1); //initialize generated picture with zeros,32bit floating point, one channel
 	res.setTo(0);
 	Mat output(inputIm.rows, inputIm.cols, CV_32FC1); //initialize generated picture with zeros
 	output.setTo(0);
 
-	//int pixCount = 0;
-	//Vec3i pixData; // data of a pixel, stores number of connected pixels as int and its image coordinates (row, col)
-	float label = 1;
 	
-	//vector<Vec3i> compData; //each slot in compData is the label of a componant. Each slot stores a pixData
+	float label = 1; //start with label 1, 0 is background
+	
 
 	//first pass
 	for (int r = 0; r < inputIm.rows; r++)
@@ -142,12 +153,12 @@ Mat FindLargestComponant(Mat &inputIm){
 		  }
 	}
 
-	////we now know how many labels exist, we create a mat to store data, keep the count
+	cout << "I says " << label << "components" << endl;
+	//we now know how many labels can maximum exist, we create a mat to store data, keep the count
 	Mat compData(1, label, CV_32FC1);
 	compData.setTo(0);
 	float* compDataPtr = compData.ptr<float>(0);
-	//vector<Vec3b> colors(label);
-	//colors[0] = Vec3b(0, 0, 0);//background
+
 
 	//second pass, looping through the res image generated from first pass
 	for (int row = 1; row < res.rows; row++) //skip first row
@@ -217,19 +228,22 @@ Mat FindLargestComponant(Mat &inputIm){
 			}
 		}
 	}
+
+
 	cout << "maxlabel = " << maxLabel << " maxpix" << pix << endl;
 	//make the new black and white image
 	for (int r = 0; r < inputIm.rows; r++)
 	{
 
 		uchar* accessPtr = inputIm.ptr<uchar>(r);//used for accessing
-		float* outputPtr = output.ptr<float>(r); //used for setting
+		float* resPtr = res.ptr<float>(r); //used for setting
 
 		for (int c = 0; c < inputIm.cols; c++)
 		{
-			if ((int)outputPtr[c] != 0 ) //== maxLabel)
+			if ((int)resPtr[c] == maxLabel)
 			{
 				accessPtr[c] = (uchar)255;
+
 			}
 			else
 			{
@@ -238,7 +252,6 @@ Mat FindLargestComponant(Mat &inputIm){
 		}
 	}
 
-	return output;
 
 };
 

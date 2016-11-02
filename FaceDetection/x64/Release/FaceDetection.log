@@ -1,0 +1,43 @@
+﻿  Main.cpp
+D:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+D:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+D:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+D:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+Main.cpp(95): error C2672: 'mybegin': no matching overloaded function found
+Main.cpp(95): error C2784: 'const T *mybegin(const T (&)[N])': could not deduce template argument for 'const T (&)[N]' from 'std::vector<int,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=int
+          ]
+  Main.cpp(14): note: see declaration of 'mybegin'
+Main.cpp(95): error C2672: 'myend': no matching overloaded function found
+Main.cpp(95): error C2784: 'const T *myend(const T (&)[N])': could not deduce template argument for 'const T (&)[N]' from 'std::vector<int,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=int
+          ]
+  Main.cpp(15): note: see declaration of 'myend'
+Main.cpp(95): error C2672: 'std::max_element': no matching overloaded function found
+Main.cpp(95): error C2780: '_FwdIt std::max_element(_FwdIt,_FwdIt)': expects 2 arguments - 1 provided
+  C:\Program Files (x86)\VC\include\algorithm(3491): note: see declaration of 'std::max_element'
+Main.cpp(95): error C2780: '_FwdIt std::max_element(_FwdIt,_FwdIt,_Pr)': expects 3 arguments - 1 provided
+  C:\Program Files (x86)\VC\include\algorithm(3482): note: see declaration of 'std::max_element'
+Main.cpp(96): error C2672: 'mybegin': no matching overloaded function found
+Main.cpp(96): error C2784: 'const T *mybegin(const T (&)[N])': could not deduce template argument for 'const T (&)[N]' from 'std::vector<int,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=int
+          ]
+  Main.cpp(14): note: see declaration of 'mybegin'
+Main.cpp(96): error C2672: 'myend': no matching overloaded function found
+Main.cpp(96): error C2784: 'const T *myend(const T (&)[N])': could not deduce template argument for 'const T (&)[N]' from 'std::vector<int,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=int
+          ]
+  Main.cpp(15): note: see declaration of 'myend'
+Main.cpp(96): error C2672: 'std::min_element': no matching overloaded function found
+Main.cpp(96): error C2780: '_FwdIt std::min_element(_FwdIt,_FwdIt)': expects 2 arguments - 1 provided
+  C:\Program Files (x86)\VC\include\algorithm(3520): note: see declaration of 'std::min_element'
+Main.cpp(96): error C2780: '_FwdIt std::min_element(_FwdIt,_FwdIt,_Pr)': expects 3 arguments - 1 provided
+  C:\Program Files (x86)\VC\include\algorithm(3511): note: see declaration of 'std::min_element'
