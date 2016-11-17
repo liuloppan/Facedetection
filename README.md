@@ -12,6 +12,9 @@ The technique used is filtering out relevant pixels based on color.
 Details of the skin color model that is used can be found in the paper
 'Face Segmentation Using Skin-Color Map in Videophone Applications' by Chai and Ngan.
 
+
+![Alt text](master/data/example2.png?raw=true "Result")
+
 ----------Limitations----------- <br />
 A face will have a large cluster of skin coloured pixels while the background
 may or may not have large clusters of "skin colored" pixels.
