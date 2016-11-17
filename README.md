@@ -5,6 +5,7 @@ API: OpenCV 3.1 <br />
 
 Date: 17/11-2016 <br />
 Written by: Lovisa Hassler <br />
+<br />
 -----------Functionality--------- <br />
 This code segments out facial area in video of a person sitting in front of a computer.
 The technique used is filtering out relevant pixels based on color.
