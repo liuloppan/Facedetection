@@ -3,7 +3,6 @@ d:\opencv\build\include\opencv2\core\mat.hpp(1965): warning C4819: The file cont
 d:\opencv\build\include\opencv2\core\persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
 d:\opencv\build\include\opencv2\core\utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
 d:\opencv\build\include\opencv2\core\utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-c:\users\cglab\documents\visual studio 2015\projects\facedetection\facedetection\main.cpp(104): warning C4244: '=': conversion from 'float' to 'uchar', possible loss of data
-c:\users\cglab\documents\visual studio 2015\projects\facedetection\facedetection\main.cpp(109): warning C4244: '=': conversion from 'float' to 'uchar', possible loss of data
+c:\users\cglab\documents\visual studio 2015\projects\facedetection\facedetection\main.cpp(117): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   FaceDetection.vcxproj -> C:\Users\CGLAB\Documents\Visual Studio 2015\Projects\FaceDetection\x64\Debug\FaceDetection.exe
   FaceDetection.vcxproj -> C:\Users\CGLAB\Documents\Visual Studio 2015\Projects\FaceDetection\x64\Debug\FaceDetection.pdb (Full PDB)
