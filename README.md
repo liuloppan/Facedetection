@@ -16,9 +16,10 @@ Details of the skin color model that is used can be found in the paper
 A face will have a large cluster of skin coloured pixels while the background
 may or may not have large clusters of "skin colored" pixels.
 Three conditions have to apply for this code to be used successfully.
+<br />
 1. Make sure you have proper lighting for the camera and the room and that the background 
 don't have too many objects that can be similar to skin in color.
-2. The face have to be the largest skin colored component in the image, this means there
+<br />2. The face have to be the largest skin colored component in the image, this means there
 can't be too large clusters of skin colored background noise that can be interpreted as the face
-3. Light hair and other 'skin colored" objects can be classified as skin and will not be filtered out
+<br />3. Light hair and other 'skin colored" objects can be classified as skin and will not be filtered out
 if they are somehow connected to the face.
