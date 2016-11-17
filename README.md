@@ -13,7 +13,7 @@ Details of the skin color model that is used can be found in the paper
 'Face Segmentation Using Skin-Color Map in Videophone Applications' by Chai and Ngan.
 
 
-![Alt text](master/data/example2.png?raw=true "Result")
+![Original video to the left and filtered face to the right](https://raw.githubusercontent.com/liuloppan/Facedetection/master/data/example2.png "Result")
 
 ----------Limitations----------- <br />
 A face will have a large cluster of skin coloured pixels while the background
