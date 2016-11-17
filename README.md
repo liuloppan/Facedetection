@@ -1,17 +1,17 @@
 # Facedetection
 
-Language: C++
-API: OpenCV 3.1
+Language: C++ <br />
+API: OpenCV 3.1 <br />
 
-Date: 17/11-2016
-Written by: Lovisa Hassler
-*****Functionality********
+Date: 17/11-2016 <br />
+Written by: Lovisa Hassler <br />
+-----------Functionality--------- <br />
 This code segments out facial area in video of a person sitting in front of a computer.
 The technique used is filtering out relevant pixels based on color.
 Details of the skin color model that is used can be found in the paper
 'Face Segmentation Using Skin-Color Map in Videophone Applications' by Chai and Ngan.
 
-*****Limitations********
+----------Limitations----------- <br />
 A face will have a large cluster of skin coloured pixels while the background
 may or may not have large clusters of "skin colored" pixels.
 Three conditions have to apply for this code to be used successfully.
